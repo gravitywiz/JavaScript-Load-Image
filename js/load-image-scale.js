@@ -72,8 +72,8 @@
       }
     }
     newOptions.crop = true
-    width = img.naturalWidth || img.width
-    height = img.naturalHeight || img.height
+    width = options.maxWidth || img.naturalWidth || img.width
+    height = options.maxHeight || img.naturalHeight || img.height
     if (width / height > aspectRatio) {
       newOptions.maxWidth = height * aspectRatio
       newOptions.maxHeight = height
