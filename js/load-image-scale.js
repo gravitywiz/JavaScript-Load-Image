@@ -158,8 +158,15 @@
         (minHeight || destHeight) / destHeight
       )
       if (scale > 1) {
-        destWidth *= scale
-        destHeight *= scale
+        /**
+         * These value are used to create canvas elements. Ensuring that they are integers
+         * (rather than floats) avoids a potential 1px rounding error in the canvas element
+         * as canvas elements will always round it down to the nearest integer rather than
+         * following standard rounding rules. For example, using a value of 199.9999999px
+         * for a canvas height would result in a height of 199px rather than 200px.
+         */
+        destWidth = Math.round(destWidth * scale)
+        destHeight = Math.round(destHeight * scale)
       }
     }
     /**
@@ -171,8 +178,15 @@
         (maxHeight || destHeight) / destHeight
       )
       if (scale < 1) {
-        destWidth *= scale
-        destHeight *= scale
+        /**
+         * These value are used to create canvas elements. Ensuring that they are integers
+         * (rather than floats) avoids a potential 1px rounding error in the canvas element
+         * as canvas elements will always round it down to the nearest integer rather than
+         * following standard rounding rules. For example, using a value of 199.9999999px
+         * for a canvas height would result in a height of 199px rather than 200px.
+         */
+        destWidth = Math.round(destWidth * scale)
+        destHeight = Math.round(destHeight * scale)
       }
     }
     if (useCanvas) {
